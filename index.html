@@ -10,25 +10,45 @@
     <div class="container">
         <header>
             <h1>Wordly</h1>
-            <button id="theme-toggle">Toggle Dark Mode</button>
+            <button id="theme-toggle" type="button">Toggle Dark Mode</button>
         </header>
 
         <main>
             <form id="search-form">
-                <input type="text" id="search-input" placeholder="Search for a word..." required>
-                <button type="submit">Search</button>
+                <input type="text" id="search-input" placeholder="Search for a word (e.g., hello, code)..." required autocomplete="off">
+                <button type="submit" id="submit-btn">Search</button>
             </form>
 
+            <!-- Saved / Favorite Words Section -->
+            <section id="favorites-section" class="favorites-container hidden">
+                <span class="fav-label">Saved Words:</span>
+                <div id="favorites-list" class="favorites-list"></div>
+            </section>
+
+            <!-- Instant Loading Indicator (Fixes the frozen feeling) -->
+            <div id="loading-indicator" class="loading hidden">
+                <div class="spinner"></div>
+                <span>Searching dictionary...</span>
+            </div>
+
+            <!-- Error Display -->
             <section id="error-container" class="hidden"></section>
             
+            <!-- Results Display -->
             <section id="results-container" class="hidden">
                 <div class="word-header">
-                    <h2 id="word-title"></h2>
-                    <span id="phonetic"></span>
-                    <button id="play-audio" class="hidden">🔊 Play</button>
+                    <div class="word-title-group">
+                        <h2 id="word-title"></h2>
+                        <span id="phonetic"></span>
+                    </div>
+                    <div class="word-actions">
+                        <button id="play-audio" type="button" class="action-btn hidden">🔊 Play</button>
+                        <button id="save-word-btn" type="button" class="action-btn fav-btn">☆ Save Word</button>
+                    </div>
                 </div>
                 
                 <div id="meanings-container"></div>
+                <div id="source-container" class="source-footer"></div>
             </section>
         </main>
     </div>
